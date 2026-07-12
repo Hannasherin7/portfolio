@@ -1,46 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
-import { useInView } from 'framer-motion'
 import { GraduationCap } from 'lucide-react'
-import { education, profile, stats } from '../data/content'
+import { education, profile } from '../data/content'
 import SectionHeading from './ui/SectionHeading'
 import AnimatedText from './ui/AnimatedText'
 import Reveal from './ui/Reveal'
-
-function Stat({ value, label }: { value: string; label: string }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const inView = useInView(ref, { once: true, margin: '-10%' })
-  const [shown, setShown] = useState('0')
-  const num = parseFloat(value.replace(/[^\d.]/g, ''))
-  const suffix = value.replace(/[\d.,]/g, '')
-
-  useEffect(() => {
-    if (!inView || Number.isNaN(num)) {
-      if (Number.isNaN(num)) setShown(value)
-      return
-    }
-    let raf = 0
-    const start = performance.now()
-    const dur = 1400
-    const tick = (t: number) => {
-      const p = Math.min((t - start) / dur, 1)
-      const eased = 1 - Math.pow(1 - p, 4)
-      setShown(Math.round(num * eased).toString())
-      if (p < 1) raf = requestAnimationFrame(tick)
-    }
-    raf = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf)
-  }, [inView, num, value])
-
-  return (
-    <div ref={ref} className="rounded-2xl border border-line glass p-5">
-      <div className="font-display text-3xl font-semibold text-white sm:text-4xl">
-        {shown}
-        <span className="text-accent2">{suffix}</span>
-      </div>
-      <div className="mt-1 text-xs text-mist">{label}</div>
-    </div>
-  )
-}
 
 export default function About() {
   return (
@@ -56,12 +18,6 @@ export default function About() {
               text={profile.intro}
               className="max-w-2xl text-lg leading-relaxed text-white/80"
             />
-
-            <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {stats.map((s) => (
-                <Stat key={s.label} value={s.value} label={s.label} />
-              ))}
-            </div>
           </div>
 
           <div className="space-y-4">
