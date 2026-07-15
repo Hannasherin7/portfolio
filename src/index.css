@@ -119,6 +119,15 @@ html.lenis body {
     background-clip: text;
     color: transparent;
   }
+  /* SplitType wraps each letter in a transformed <span> for the reveal
+     animation, which breaks background-clip:text on the parent. Re-applying
+     the gradient per-character keeps the letters visible while animating. */
+  .text-gradient .char {
+    background: linear-gradient(120deg, var(--grad-start) 0%, #b7aaff 45%, #7c5cff 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
   .kbd {
     @apply inline-flex h-6 min-w-6 items-center justify-center rounded-md border border-line bg-white/[0.04] px-1.5 font-mono text-[11px] text-white/70;
   }

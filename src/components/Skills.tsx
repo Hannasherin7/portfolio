@@ -9,6 +9,47 @@ const MARQUEE = [
   'MySQL', 'MongoDB', 'TypeScript', 'REST APIs', 'JWT', 'Git', 'Agile',
 ]
 
+// Skill name → Devicon slug. Items without a brand logo fall back to text only.
+const LOGO: Record<string, string> = {
+  PHP: 'php',
+  Laravel: 'laravel',
+  'Node.js': 'nodejs',
+  'Express.js': 'express',
+  Java: 'java',
+  'Spring Boot': 'spring',
+  'React.js': 'react',
+  HTML5: 'html5',
+  CSS3: 'css3',
+  Bootstrap: 'bootstrap',
+  JavaScript: 'javascript',
+  TypeScript: 'typescript',
+  MySQL: 'mysql',
+  MongoDB: 'mongodb',
+  Git: 'git',
+  Postman: 'postman',
+}
+
+const devicon = (slug: string) =>
+  `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${slug}/${slug}-original.svg`
+
+/** Small brand logo; hides itself if the CDN icon fails so the pill degrades to text. */
+function TechLogo({ name }: { name: string }) {
+  const slug = LOGO[name]
+  if (!slug) return null
+  return (
+    <img
+      src={devicon(slug)}
+      alt=""
+      aria-hidden
+      loading="lazy"
+      className="h-4 w-4 object-contain"
+      onError={(e) => {
+        ;(e.currentTarget as HTMLImageElement).style.display = 'none'
+      }}
+    />
+  )
+}
+
 function Marquee() {
   const track = useRef<HTMLDivElement>(null)
   useEffect(() => {
@@ -76,8 +117,9 @@ export default function Skills() {
                   {g.items.map((it) => (
                     <span
                       key={it}
-                      className="rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs text-white/80 transition-colors group-hover:border-white/15"
+                      className="inline-flex items-center gap-1.5 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 text-xs text-white/80 transition-colors group-hover:border-white/15"
                     >
+                      <TechLogo name={it} />
                       {it}
                     </span>
                   ))}

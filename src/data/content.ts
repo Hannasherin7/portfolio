@@ -120,18 +120,25 @@ export const education = [
   {
     degree: 'Master of Computer Application (MCA)',
     school: 'FISAT, Angamaly',
+    university: 'APJ Abdul Kalam Technological University (KTU)',
     period: 'Jun 2023 — May 2025',
     score: 'CGPA 8.27 / 10',
+    logo: '/logos/ktu.png',
+    badge: 'KTU',
   },
   {
     degree: 'Bachelor of Computer Science (BCS)',
     school: 'MCAS Moodadi, Kozhikode',
+    university: 'University of Calicut',
     period: 'Jun 2020 — Apr 2023',
     score: 'CGPA 6.66 / 10',
+    logo: '/logos/calicut.png',
+    badge: 'CU',
   },
 ]
 
 export const certifications = [
+  'Artificial Intelligence Fundamentals — IBM SkillsBuild',
   'SQL and Relational Databases — IBM',
   'Learn Java Programming: Beginner to Master — Udemy',
   'Introduction to Data Science — Infosys Springboard',
