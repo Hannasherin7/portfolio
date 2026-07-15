@@ -35,7 +35,7 @@ export const skillGroups = [
   },
   {
     title: 'Frontend',
-    items: ['React.js', 'HTML5', 'CSS3', 'Bootstrap', 'JavaScript', 'TypeScript'],
+    items: ['React.js', 'HTML5', 'CSS3', 'Bootstrap', 'JavaScript'],
   },
   {
     title: 'Databases',

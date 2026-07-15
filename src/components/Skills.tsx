@@ -6,7 +6,7 @@ import Reveal from './ui/Reveal'
 
 const MARQUEE = [
   'PHP', 'Laravel', 'React', 'Node.js', 'Express', 'Java', 'Spring Boot',
-  'MySQL', 'MongoDB', 'TypeScript', 'REST APIs', 'JWT', 'Git', 'Agile',
+  'MySQL', 'MongoDB', 'REST APIs', 'JWT', 'Git', 'Agile',
 ]
 
 // Skill name → Devicon slug. Items without a brand logo fall back to text only.
